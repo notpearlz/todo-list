@@ -1,10 +1,10 @@
 import { buttonForm, toggleForm } from "./buttonform";
 
-export default function sidebar(){
+export default function sidebar(projects){
     const main = document.querySelector("main")
-    const div = document.createElement("div");
+    const sidebar = document.createElement("div");
 
-    div.classList.add("sidebar");
+    sidebar.classList.add("sidebar");
 
 
     const newProjectBtn = document.createElement("button");
@@ -16,10 +16,22 @@ export default function sidebar(){
         console.log("toggle")
     })
 
+    sidebar.append(newProjectBtn);
 
-    div.append(newProjectBtn);
 
-    main.append(div);
+    for(let i = 0; i < projects.length; i++){
+        const project = document.createElement("button");
+        
+        project.classList.add("project");
+        project.innerHTML = projects[i].getName();
+
+        sidebar.append(project);
+        
+    }
+
+
+
+    main.append(sidebar);
     buttonForm();
 
 }

@@ -1,6 +1,10 @@
 import Render from "./modules/renderDOM";
+import Project from "./modules/project"
 
 
 
+export const projects = [new Project("Default")];
 
-const DOM = new Render();
+
+
+export const DOM = new Render();
