@@ -32,6 +32,5 @@ export default function sidebar(projects){
 
 
     main.append(sidebar);
-    buttonForm();
-
+    //buttonForm();
 }

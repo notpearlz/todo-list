@@ -66,6 +66,8 @@ main {
     flex-direction: column;
     position: relative;
     z-index: 1;
+    
+
 
     
     align-items: center;
@@ -92,6 +94,7 @@ div.sidebar-inactive {
 button.newProject {
     font-size: 25px;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .project {
@@ -136,4 +139,20 @@ button.newProject {
 
 input[type="radio"]{
     width: 10px;
+}
+
+main .content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+
+    gap: 15px;
+    padding: 20px;
+}
+
+.content .card {
+    height: 200px;
+    width: 100%;
+
+    background-color: var(--secondary-color);
 }

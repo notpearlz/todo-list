@@ -23,13 +23,15 @@ export default class Project {
 
 
     // Add task to project
-    addTask = function(){
-
+    addTask = function(task){
+        this.projects.push(task);
     }
 
     // Remove task from project
-    removeTask = function(){
-
+    removeTask = function(task){
+        // find task in array
+        // remove task
     }
 
+    
 }
