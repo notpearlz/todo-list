@@ -86,10 +86,7 @@ div.sidebar-inactive {
     right: 100%;
 }
 
-.content {
-    display: flex;
-    flex: 1 1 auto;
-}
+
 
 button.newProject {
     font-size: 25px;
@@ -99,7 +96,6 @@ button.newProject {
 
 .project {
 
-
     width: 100%;
     height: 50px;
     font-size: 20px;
@@ -107,38 +103,29 @@ button.newProject {
 
 }
 
-#buttonform{
+.buttonform{
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
 
     gap: 10px;
 
-    right: 0px;
+
     height: 500px;
     width: 450px;
-
-    transition:right 1s ease;
 
     padding: 20px;
     background-color: var(--secondary-color);
     border-right: 3px solid var(--primary-color);
     border-bottom: 3px solid var(--primary-color);
 
-
 }
 
-#buttonform.disabled  {
-    z-index: -1;
-    right: 100%;
-}
-
-.priority {
+.container {
     display: flex;
-}
-
-input[type="radio"]{
-    width: 10px;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
 }
 
 main .content{
@@ -153,6 +140,27 @@ main .content{
 .content .card {
     height: 200px;
     width: 100%;
+}
 
-    background-color: var(--secondary-color);
+
+.lowpriority {
+    background-color: #ffff00;
+
+    accent-color: #ffff00;
+
+}
+
+.mediumpriority {
+
+    background-color: #ff7b00;
+
+    accent-color:  #ff7b00;
+
+}
+.highpriority {
+
+    background-color: #ff0000;
+
+    accent-color: #ff0000;
+
 }

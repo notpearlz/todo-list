@@ -1,4 +1,6 @@
-import { buttonForm, toggleForm } from "./buttonform";
+import { currProject, projects, setCurrProject } from "../..";
+import Project from "../project";
+import { reload } from "../renderDOM";
 
 export default function sidebar(projects){
     const main = document.querySelector("main")
@@ -11,10 +13,7 @@ export default function sidebar(projects){
     newProjectBtn.classList.add("newProject");
     newProjectBtn.classList.add("project");
     newProjectBtn.innerHTML = "+ New Project";
-    newProjectBtn.addEventListener("click", () => { 
-        toggleForm();
-        console.log("toggle")
-    })
+    newProjectBtn.addEventListener("click", newProject)
 
     sidebar.append(newProjectBtn);
 
@@ -25,6 +24,10 @@ export default function sidebar(projects){
         project.classList.add("project");
         project.innerHTML = projects[i].getName();
 
+        project.addEventListener("click", () => {
+            setCurrProject(i);
+            reload();
+        })
         sidebar.append(project);
         
     }
@@ -32,5 +35,57 @@ export default function sidebar(projects){
 
 
     main.append(sidebar);
-    //buttonForm();
+}
+
+
+
+
+
+const newProject = () => {
+    const content = document.querySelector(".content");
+
+    //Create a task form
+    const form = document.createElement("form");
+    form.classList.add("buttonform");
+
+
+    const title = document.createElement("input");
+    title.name = "title";
+    title.placeholder="title";
+
+    const description = document.createElement("textarea");
+    description.name = "description";
+    description.placeholder="description";
+
+
+    //Submit
+    const submit = document.createElement("button");
+    submit.type = "submit";
+    submit.innerText="Submit";
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(document.querySelector(".buttonform"));
+
+        const title = data.get("title")
+        const description = data.get("description")
+
+        projects.push(new Project(title, description))
+
+        reload();        
+        form.remove();
+    })
+
+    const close = document.createElement("button");
+    close.type = "button";
+    close.innerText="Close";
+    close.addEventListener("click", () => {
+
+        form.remove();
+    })
+
+    form.append(title);
+    form.append(description);
+    form.append(submit);
+    form.append(close);
+    content.append(form);
 }

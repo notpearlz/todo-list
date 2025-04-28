@@ -6,33 +6,33 @@ import content from "./components/content";
 
 import { projects } from "..";
 
-export default class Render {
+export class Render {
 
     // Render all Html related things
     constructor(){
 
-        this.reload();
+        reload();
     }
 
     
 
-    reload(){
-        const body = document.querySelector("body");
-        body.innerHTML = ""
 
 
-        const head = document.createElement("header");
-
-        const main = document.createElement("main");
-
-        body.append(head);
-        body.append(main);
+}
+export const reload = () => {
+    const body = document.querySelector("body");
+    body.innerHTML = ""
 
 
-        header();
-        sidebar(projects);
-        content();
-    }
+    const head = document.createElement("header");
+
+    const main = document.createElement("main");
+
+    body.append(head);
+    body.append(main);
 
 
+    header();
+    sidebar(projects);
+    content();
 }
