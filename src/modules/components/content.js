@@ -47,7 +47,11 @@ export default function content(){
         const h1 = document.createElement("h1");
         h1.textContent = task.getName();
 
+        const h2 = document.createElement("p");
+        h2.textContent = task.getDate();
+
         card.append(h1);
+        card.append(h2);
         content.append(card);
 
         card.addEventListener("click", () => cardInfo(i));
@@ -81,6 +85,7 @@ const cardInfo = function(i){
     title.placeholder="title";
     title.name = "title";
     title.value = task.getName();
+    title.required = true;
 
 
     //Priority
@@ -147,9 +152,16 @@ const cardInfo = function(i){
 
     //Submit
     const submit = document.createElement("button");
-    submit.innerText="Submit";
+    submit.innerText="Close";
     submit.addEventListener("click", (e) => {
+
+        if (!form.checkValidity()) {
+            form.reportValidity(); // this will show the browser's error popup
+            return; // stop doing anything else
+        }
+
         e.preventDefault();
+
 
         const data = new FormData(document.querySelector(".buttonform"));
 
@@ -212,6 +224,7 @@ const newTask = function(){
     const title = document.createElement("input")
     title.placeholder="title";
     title.name = "title";
+    title.required = true;
 
 
     //Priority
@@ -226,6 +239,7 @@ const newTask = function(){
     prioritylow.setAttribute("id", "lowpriority");
     prioritylow.setAttribute("name", "priority");
     prioritylow.setAttribute("type", "radio");
+    prioritylow.checked = true;
 
     const prioritymedium = document.createElement("input");
     prioritymedium.classList.add("mediumpriority");
@@ -266,6 +280,12 @@ const newTask = function(){
     const submit = document.createElement("button");
     submit.innerText="Submit";
     submit.addEventListener("click", (e) => {
+
+        if (!form.checkValidity()) {
+            form.reportValidity(); // this will show the browser's error popup
+            return; // stop doing anything else
+        }
+
         e.preventDefault();
 
         const data = new FormData(document.querySelector(".buttonform"));
@@ -274,7 +294,7 @@ const newTask = function(){
         const dueDate = data.get("date");
         const description = data.get("description");
         const notes = data.get("notes");
-        var priority = -1;
+        var priority = 1;
 
         var radios = document.getElementsByName("priority");
         for (var i = 0, length = radios.length; i < length; i++) {
@@ -304,7 +324,7 @@ const newTask = function(){
     form.append(dueDate);
     form.append(description);
     form.append(notes);
-    form.append(submit);
     form.append(close);
+    form.append(submit);
     content.append(form);
 }

@@ -42,6 +42,13 @@ export default function sidebar(projects){
 
 
 const newProject = () => {
+
+    //Return if theres already a button form
+    const test = document.querySelector(".buttonform");
+    if(test) {
+        return;
+    } 
+    
     const content = document.querySelector(".content");
 
     //Create a task form

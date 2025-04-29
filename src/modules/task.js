@@ -4,7 +4,11 @@ export default class Task{
     // Not all tasks will have a due date
     constructor(title, priority, dueDate, description, notes){
         this.title = title;
-        this.priority = priority;
+        if(priority){
+            this.priority = priority;
+        } else {
+            this.priority = 1
+        }
 
         if(description){
             this.description = description;
