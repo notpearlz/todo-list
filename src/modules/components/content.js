@@ -1,6 +1,7 @@
-import { currProject, projects } from "../..";
-import Render, { reload } from "../renderDOM";
+import { projects } from "../..";
+import { reload } from "../renderDOM";
 import Task from "../task";
+import { currProject } from "../project";
 
 export default function content(){
     const main = document.querySelector("main");
@@ -187,6 +188,7 @@ const cardInfo = function(i){
         task.setNotes(notes);
         task.setPriority(priority);
 
+        localStorage.setItem("projects", JSON.stringify(projects));
         reload();
         form.remove();
     })
@@ -306,6 +308,7 @@ const newTask = function(){
 
 
         projects[currProject].addTask(new Task(title, priority, dueDate, description, notes));
+        localStorage.setItem("projects", JSON.stringify(projects));
         reload();
         form.remove();
     })

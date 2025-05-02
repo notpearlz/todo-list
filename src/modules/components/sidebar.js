@@ -1,6 +1,7 @@
-import { currProject, projects, setCurrProject } from "../..";
-import Project from "../project";
+import { projects } from "../..";
+import { Project } from "../project";
 import { reload } from "../renderDOM";
+import { setCurrProject } from "../project";
 
 export default function sidebar(projects){
     const main = document.querySelector("main")
@@ -78,6 +79,7 @@ const newProject = () => {
 
         projects.push(new Project(title, description))
 
+        localStorage.setItem("projects", JSON.stringify(projects));
         reload();        
         form.remove();
     })

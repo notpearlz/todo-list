@@ -1,6 +1,11 @@
 import { reload } from "./renderDOM";
 
-export default class Project {
+export var currProject = 0;
+
+export const setCurrProject = (newProject) => {
+    currProject = newProject
+}
+export class Project {
 
     // Project Name
 
